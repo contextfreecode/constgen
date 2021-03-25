@@ -8,7 +8,7 @@ using Vec = std::array<Val, Size>;
 
 template<typename Val, std::size_t Size>
 auto dot(const Vec<Val, Size>& a, const Vec<Val, Size>& b) -> Val {
-    return std::transform_reduce(a.begin(), a.end(), b.cbegin(), Val{0});
+    return std::transform_reduce(a.begin(), a.end(), b.begin(), Val{0});
 }
 
 // template<std::size_t Size, typename Val>
