@@ -23,5 +23,5 @@ const vec2f64 = vec_ops(2, f64);
 pub fn main() !void {
     const a = [_]f64{ 1.5, 2 };
     const stdout = std.io.getStdOut().writer();
-    try stdout.print("Hello, {}!\n", .{vec2f64.norm(a)});
+    try stdout.print("norm: {}\n", .{vec2f64.norm(a)});
 }

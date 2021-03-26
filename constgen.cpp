@@ -19,5 +19,5 @@ auto norm(const Vec<Val, Size>& a) -> Val {
 
 auto main() -> int {
     auto a = Vec<double, 2>{1.5, 2};
-    std::cout << norm(a) << std::endl;
+    std::cout << "norm: " << norm(a) << std::endl;
 }
