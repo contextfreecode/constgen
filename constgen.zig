@@ -1,6 +1,6 @@
 const std = @import("std");
 
-fn vec_ops(size: usize, comptime Val: type) type {
+fn vecOps(size: usize, comptime Val: type) type {
     return struct {
         // fn dot(a: []const Val, b: []const Val) Val {
         fn dot(a: [size]Val, b: [size]Val) Val {
@@ -17,7 +17,7 @@ fn vec_ops(size: usize, comptime Val: type) type {
     };
 }
 
-const vec2f64 = vec_ops(2, f64);
+const vec2f64 = vecOps(2, f64);
 // export const norm2f64 = vec2f64.norm;
 
 pub fn main() !void {
