@@ -20,8 +20,7 @@ fn vecOps(size: usize, comptime Val: type) type {
 const vec2f64 = vecOps(2, f64);
 // export const norm2f64 = vec2f64.norm;
 
-pub fn main() !void {
+pub fn main() void {
     const a = [_]f64{ 1.5, 2 };
-    const stdout = std.io.getStdOut().writer();
-    try stdout.print("norm: {}\n", .{vec2f64.norm(a)});
+    std.debug.print("norm: {}\n", .{vec2f64.norm(a)});
 }
