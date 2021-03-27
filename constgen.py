@@ -11,7 +11,7 @@ Val = TypeVar("Val")
 Vec = Sequence[Val]
 
 
-def vec_ops(size: int, val_type: Callable[[Any], Val]):
+def vec_ops(*, size: int, val_type: Callable[[Any], Val]):
 
     class VecOps:
         @staticmethod
@@ -28,7 +28,7 @@ def vec_ops(size: int, val_type: Callable[[Any], Val]):
     return VecOps
 
 
-vec_ops_2f32 = vec_ops(2, float32)
+vec_ops_2f32 = vec_ops(size=2, val_type=float32)
 
 
 def main():
