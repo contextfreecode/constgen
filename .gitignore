@@ -3,3 +3,5 @@ env.sh
 notes.txt
 /target
 /zig-cache
+*.hi
+*.o
