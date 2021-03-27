@@ -12,7 +12,7 @@ module Hello (Message : Message_type) : Hello_type = struct
   let hello () = print_endline Message.message
 end
 
-module Other_hello =
+module Hi =
   Hello (
     struct
       let message = "Hi"
@@ -21,7 +21,7 @@ module Other_hello =
 let goodbye () = print_endline "Goodbye"
 
 let hello_goodbye () =
-  Other_hello.hello ();
+  Hi.hello ();
   goodbye ()
 
 let main () =

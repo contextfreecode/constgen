@@ -1,0 +1,5 @@
+constgen
+env.sh
+notes.txt
+/target
+/zig-cache
