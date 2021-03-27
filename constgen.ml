@@ -1,30 +1,39 @@
-module type Message_type = sig
-  val message : string
+module type Vec_type = sig
+  val size : int
 end
 
-module type Hello_type = sig
-  val hello : unit -> unit
+(* module type VecOps_type = sig
+  (* type Vec = floatarray *)
+  val dot : floatarray -> floatarray -> float
 end
 
-(* module Hello (Hello : Hello_type) : Hello_type = struct *)
-module Hello (Message : Message_type) : Hello_type = struct
-  (* let message = "Hello" *)
-  let hello () = print_endline Message.message
+module VecOps (Vec : Vec_type) : VecOps_type = struct
+  let dot a b =
+    let prods = Float.Array.map2 (fun x y -> x *. y) a b in
+    Float.Array.fold_left (fun x sum -> x +. sum) 0.0 prods
+end *)
+
+module type VecOps_type = sig
+  val dot : float array -> float array -> float
+  val norm : float array -> float
 end
 
-module Hi =
-  Hello (
+module VecOps (Vec : Vec_type) : VecOps_type = struct
+  let dot a b =
+    let prods = Array.map2 (fun x y -> x *. y) a b in
+    Array.fold_left (fun x sum -> x +. sum) 0.0 prods
+  let norm a = Float.sqrt (dot a a)
+end
+
+module VecOps2f =
+  VecOps (
     struct
-      let message = "Hi"
-    end)
-
-let goodbye () = print_endline "Goodbye"
-
-let hello_goodbye () =
-  Hi.hello ();
-  goodbye ()
+      let size = 2
+    end
+  )
 
 let main () =
-  hello_goodbye ()
+  let a = [|1.5; 2.0|] in
+  print_endline (string_of_float (VecOps2f.norm a))
 
 let () = main ()
