@@ -1,5 +1,5 @@
 from collections.abc import Sequence
-from math import sqrt
+from numpy import complex64, complex128, float32, float64, sqrt
 from typing import Tuple, TypeVar, cast
 
 
