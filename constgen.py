@@ -1,3 +1,4 @@
+from collections.abc import Sequence
 from math import sqrt
 from typing import Tuple, TypeVar, cast
 
@@ -7,7 +8,10 @@ Val = TypeVar("Val")
 
 def vec_ops(size: int):
     # Vec = Tuple.__getitem__((Val,) * size)
-    Vec = Tuple[Val, Val]
+    # print(Vec)
+    # Vec = Tuple[Val, Val]
+    # print(Vec)
+    Vec = Sequence[Val]
 
     class VecOps:
         @staticmethod
