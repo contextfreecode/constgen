@@ -2,17 +2,6 @@ module type Vec_type = sig
   val size : int
 end
 
-(* module type VecOps_type = sig
-  (* type Vec = floatarray *)
-  val dot : floatarray -> floatarray -> float
-end
-
-module VecOps (Vec : Vec_type) : VecOps_type = struct
-  let dot a b =
-    let prods = Float.Array.map2 (fun x y -> x *. y) a b in
-    Float.Array.fold_left (fun x sum -> x +. sum) 0.0 prods
-end *)
-
 module type VecOps_type = sig
   val dot : float array -> float array -> float
   val norm : float array -> float
@@ -20,7 +9,9 @@ end
 
 module VecOps (Vec : Vec_type) : VecOps_type = struct
   let dot a b =
-    let prods = Array.map2 (fun x y -> x *. y) a b in
+    (* Loop on int range just to show we can use the size. *)
+    let range = Array.init Vec.size succ in
+    let prods = Array.map (fun i -> a.(i - 1) *. b.(i - 1)) range in
     Array.fold_left (fun x sum -> x +. sum) 0.0 prods
   let norm a = Float.sqrt (dot a a)
 end
