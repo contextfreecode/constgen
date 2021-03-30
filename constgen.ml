@@ -50,6 +50,6 @@ let main () =
   let a = [|1.5; 2.0|] in
   (* let open Complex in
   let a = [|{re = 1.5; im = 1.0}; {re = 2.0; im = 2.0}|] in *)
-  print_endline (Ops.Val.to_string (Ops.norm a))
+  Printf.printf "norm: %s\n" (Ops.Val.to_string (Ops.norm a))
 
 let () = main ()
