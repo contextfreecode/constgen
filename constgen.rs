@@ -1,6 +1,5 @@
 use num_traits::Float;
 use std::array::IntoIter;
-// use std::ops::*;
 
 fn dot<Val, const SIZE: usize>(a: [Val; SIZE], b: [Val; SIZE]) -> Val
 where
@@ -30,6 +29,13 @@ fn main() {
     // println!("norm: {}", norm(a));
 }
 
+
+
+
+// -C opt-level=3
+
+// use std::ops::*;
+
 // trait Float: Copy + Sized + Add<Self, Output = Self> + Mul<Self, Output = Self> {
 //     fn sqrt(self) -> Self;
 
@@ -45,5 +51,3 @@ fn main() {
 //         0f32
 //     }
 // }
-
-// -C opt-level=3

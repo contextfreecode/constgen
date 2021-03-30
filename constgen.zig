@@ -17,13 +17,18 @@ fn vecOps(size: usize, comptime Val: type) type {
 
 const vec2f32 = vecOps(2, f32);
 
+// export const norm2f32 = vec2f32.norm;
+
 pub fn main() void {
     const std = @import("std");
     const a = [_]f32{ 1.5, 2 };
     std.debug.print("norm: {}\n", .{vec2f32.norm(a)});
 }
 
-// export const norm2f32 = vec2f32.norm;
+
+
+
+
 // export fn norm2f32(a: *[2]f32) callconv(.C) f32 {
 //     return vec2f32.norm(a.*);
 // }
