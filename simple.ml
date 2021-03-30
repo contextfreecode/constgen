@@ -17,6 +17,7 @@ end)
 
 let main () =
   let a : FloatHi.X.t = 1.0 in
+  let b : FloatHi.X.t array = [|1.0|] in
   Printf.printf "hi: %f\n" a
 
 let () = main ()
