@@ -1,23 +1,17 @@
 module type Val_type = sig
-  module X : sig
-    type t
-  end
+  type t
 end
 
-module Hi (Val : Val_type) = struct
-  (* type t = Val.t *)
-  module X = Val.X
+module type VecOps_type = sig
+  module Val : Val_type
 end
 
-module FloatHi = Hi (struct
-  module X = Float
-  (* include Float *)
-  (* include Int *)
-end)
+(* The module type VecOps_type is what kills it. *)
+module VecOps (Val : Val_type) = struct
+(* module VecOps (Val : Val_type) : VecOps_type = struct *)
+  module Val = Val
+end
 
-let main () =
-  let a : FloatHi.X.t = 1.0 in
-  let b : FloatHi.X.t array = [|1.0|] in
-  Printf.printf "hi: %f\n" a
+module VecOps2f = VecOps (Float)
 
-let () = main ()
+let a : VecOps2f.Val.t = 1.0
