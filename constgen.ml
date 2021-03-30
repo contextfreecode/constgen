@@ -12,6 +12,13 @@ module type Vec_type = sig
   module Val : Val_type
 end
 
+(* module type VecOps_type = sig
+  module Val : Val_type
+  module Vec : Vec_type
+  val dot : Val.t array -> Val.t array -> Val.t
+  val norm : Val.t array -> Val.t
+end *)
+
 module VecOps (Vec : Vec_type) = struct
   include Vec
   let dot a b =
@@ -23,9 +30,10 @@ module VecOps (Vec : Vec_type) = struct
 end
 
 module VecOps2c = VecOps (struct
-  module Val : Val_type = struct
+  module Val = struct
     include Complex
-    let to_string c = Printf.sprintf "%f + %f im" c.re c.im
+    let mul a b = mul a (conj b)
+    let to_string a = Printf.sprintf "%f + %f im" a.re a.im
   end
   let size = 2
 end)
@@ -39,9 +47,9 @@ end)
 module Ops = VecOps2f
 
 let main () =
-  let a = [|1.5; 2.0|] in
   (* let open Complex in
-  let a : Complex.t array = [|{re = 1.5; im = 0.0}; {re = 2.0; im = 0.0}|] in *)
+  let a = [|{re = 1.5; im = 1.0}; {re = 2.0; im = 2.0}|] in *)
+  let a = [|1.5; 2.0|] in
   print_endline (Ops.Val.to_string (Ops.norm a))
 
 let () = main ()
