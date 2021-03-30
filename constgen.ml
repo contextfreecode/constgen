@@ -1,5 +1,3 @@
-open Complex
-
 module type Val_type = sig
   type t
   val add : t -> t -> t
