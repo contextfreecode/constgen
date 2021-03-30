@@ -1,5 +1,3 @@
-const std = @import("std");
-
 fn vecOps(size: usize, comptime Val: type) type {
     return struct {
         // fn dot(a: []const Val, b: []const Val) Val {
@@ -24,6 +22,7 @@ const vec2f32 = vecOps(2, f32);
 // }
 
 pub fn main() void {
+    const std = @import("std");
     const a = [_]f32{ 1.5, 2 };
     std.debug.print("norm: {}\n", .{vec2f32.norm(a)});
 }
