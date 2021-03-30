@@ -19,6 +19,9 @@ fn vecOps(size: usize, comptime Val: type) type {
 
 const vec2f32 = vecOps(2, f32);
 // export const norm2f32 = vec2f32.norm;
+// export fn norm2f32(a: *[2]f32) callconv(.C) f32 {
+//     return vec2f32.norm(a.*);
+// }
 
 pub fn main() void {
     const a = [_]f32{ 1.5, 2 };
