@@ -17,10 +17,10 @@ fn vecOps(size: usize, comptime Val: type) type {
     };
 }
 
-const vec2f64 = vecOps(2, f64);
-// export const norm2f64 = vec2f64.norm;
+const vec2f32 = vecOps(2, f32);
+// export const norm2f32 = vec2f32.norm;
 
 pub fn main() void {
-    const a = [_]f64{ 1.5, 2 };
-    std.debug.print("norm: {}\n", .{vec2f64.norm(a)});
+    const a = [_]f32{ 1.5, 2 };
+    std.debug.print("norm: {}\n", .{vec2f32.norm(a)});
 }

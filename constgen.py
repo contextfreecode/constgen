@@ -19,10 +19,7 @@ def vec_ops(*, size: int, val_type: Callable[[Any], Val]):
     class VecOps:
         @staticmethod
         def dot(a: Vec, b: Vec) -> Val:
-            val = val_type(0)
-            for i in range(size):
-                val += a[i] * b[i]
-            return val
+            return sum((a[i] * b[i] for i in range(size)), val_type(0))
 
         @staticmethod
         def norm(a: Vec) -> Val:

@@ -20,14 +20,14 @@ fn norm<Val: Float, const SIZE: usize>(a: [Val; SIZE]) -> Val {
     dot(a, a).sqrt()
 }
 
-// pub fn norm2(x: f64, y: f64) -> f64 {
+// pub fn norm2(x: f32, y: f32) -> f32 {
 //     return norm([x, y]);
 // }
 
 fn main() {
     let a = [1.5, 2.0];
     println!("norm: {}", norm(a));
-    println!("norm: {}", norm(a));
+    // println!("norm: {}", norm(a));
 }
 
 // trait Float: Copy + Sized + Add<Self, Output = Self> + Mul<Self, Output = Self> {
@@ -36,13 +36,13 @@ fn main() {
 //     fn zero() -> Self;
 // }
 
-// impl Float for f64 {
-//     fn sqrt(self) -> f64 {
+// impl Float for f32 {
+//     fn sqrt(self) -> f32 {
 //         self.sqrt()
 //     }
 
-//     fn zero() -> f64 {
-//         0f64
+//     fn zero() -> f32 {
+//         0f32
 //     }
 // }
 

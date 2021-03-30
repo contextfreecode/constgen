@@ -14,7 +14,7 @@ func norm[Size: static int, Val](a: array[Size, Val]): Val =
 #   norm([x, y])
 
 proc main() =
-  var a = [1.5, 2]
+  var a = [1.5'f32, 2'f32]
   echo fmt"norm: {norm(a)}"
 
 main()

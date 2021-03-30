@@ -17,11 +17,11 @@ auto norm(const Vec<Val, Size>& a) -> Val {
     return std::sqrt(dot(a, a));
 }
 
-// auto norm2d(double x, double y) -> double {
-//     return norm(Vec<double, 2>{x, y});
+// auto norm2f(float x, float y) -> float {
+//     return norm(Vec<float, 2>{x, y});
 // }
 
 auto main() -> int {
-    auto a = Vec<double, 2>{1.5, 2};
+    auto a = Vec<float, 2>{1.5, 2};
     std::cout << "norm: " << norm(a) << std::endl;
 }
