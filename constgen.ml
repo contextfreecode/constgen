@@ -29,6 +29,11 @@ module VecOps (Vec : Vec_type) = struct
   let norm a = Val.sqrt (dot a a)
 end
 
+module VecOps2f = VecOps (struct
+  module Val = Float
+  let size = 2
+end)
+
 module VecOps2c = VecOps (struct
   module Val = struct
     include Complex
@@ -38,18 +43,13 @@ module VecOps2c = VecOps (struct
   let size = 2
 end)
 
-module VecOps2f = VecOps (struct
-  module Val = Float
-  let size = 2
-end)
-
-(* module Ops = VecOps2c *)
 module Ops = VecOps2f
+(* module Ops = VecOps2c *)
 
 let main () =
+  let a = [|1.5; 2.0|] in
   (* let open Complex in
   let a = [|{re = 1.5; im = 1.0}; {re = 2.0; im = 2.0}|] in *)
-  let a = [|1.5; 2.0|] in
   print_endline (Ops.Val.to_string (Ops.norm a))
 
 let () = main ()
