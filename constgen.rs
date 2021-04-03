@@ -1,10 +1,10 @@
 use num_traits::Float;
-use std::array::IntoIter;
+use std::{array::IntoIter};  //, mem::size_of};
 
-fn dot<Val, const SIZE: usize>(a: [Val; SIZE], b: [Val; SIZE]) -> Val
-where
-    Val: Float,
-{
+fn dot<Val: Float, const SIZE: usize>(
+    a: [Val; SIZE],
+    b: [Val; SIZE],
+) -> Val {
     // a.iter()
     //     .zip(b)
     //     .map(|(x, y)| *x * *y)
@@ -24,13 +24,10 @@ fn norm<Val: Float, const SIZE: usize>(a: [Val; SIZE]) -> Val {
 // }
 
 fn main() {
-    let a = [1.5, 2.0];
-    println!("norm: {}", norm(a));
-    // println!("norm: {}", norm(a));
+    let a = [1.5, 2.0f32];
+    println!("norm: {}", norm::<f32, 2>(a));
+    // println!("sizes: {} {}", size_of::<[f32; 2]>(), size_of::<&[f32]>());
 }
-
-
-
 
 // -C opt-level=3
 
