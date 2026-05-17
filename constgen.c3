@@ -1,11 +1,9 @@
-// Written for C3 0.7.0 and higher.
-// C3 pre-0.7.0 uses (< >) rather than { } for generics.
-module contextfree::vec{Type, SIZE};
-import std::math;
+module contextfree::vec;
+import std::math, std::io;
 
 // We could use the built in vector type for this,
 // but it would be less interesting.
-distinct Vec = Type[SIZE];
+typedef Vec <Type, SIZE> = Type[SIZE];
 
 fn Type Vec.dot(&self, Vec other)
 {
@@ -16,9 +14,6 @@ fn Type Vec.dot(&self, Vec other)
 
 // C3 short body syntax.
 fn Type Vec.norm(Vec v) => math::sqrt(v.dot(v));
-
-module contextfree::vectest;
-import contextfree::vec, std::io, std::math;
 
 fn void main()
 {
@@ -32,11 +27,11 @@ fn void main()
 // Alternative macro solution, with some simple checks
 
 <*
- @require values::@is_same_type(v1, v2) : "Expected both values to be the same type"
+ @require $Typeof(v1) == $Typeof(v2) : "Expected both values to be the same type"
 *>
 macro dot(v1, v2)
 {
-	$typeof(v1[0]) result;
+	$Typeof(v1[0]) result;
 	foreach (i, v : v1) result += v * v2[i];
 	return result;
 }
